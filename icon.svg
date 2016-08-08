@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
-<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="128" width="128" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 128 128">
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="128" viewBox="0 0 128 128" width="128" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
  <metadata id="metadata7">
   <rdf:RDF>
    <cc:Work rdf:about="">
@@ -11,6 +11,6 @@
   </rdf:RDF>
  </metadata>
  <g id="layer1" transform="translate(0 -924.36)">
-  <flowRoot id="flowRoot3336" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" transform="translate(-5 936.36)" line-height="125%" font-size="40px" font-family="sans-serif" fill="#000000"><flowRegion id="flowRegion3338"><rect id="rect3340" y="5" width="131" x="11" height="122"/></flowRegion><flowPara id="flowPara3342" font-size="70px" line-height="125%" font-family="sans-serif" fill="#6441a5">&gt;&lt;</flowPara></flowRoot>
+  <text id="text3396" y="1011.1324" x="6" xml:space="preserve" style="word-spacing:0px;letter-spacing:0px"><tspan id="tspan3398" x="6" y="1011.1324"><tspan id="tspan3400" font-size="70px" line-height="125%" y="1011.1324" x="6" font-family="sans-serif" fill="#6441a5">&gt;&lt;</tspan></tspan></text>
  </g>
 </svg>
