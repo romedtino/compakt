@@ -1,6 +1,6 @@
 {
   "name": "Compakt",
   "tagline": "Twitch Chat streamlining. Condenses repeated messages/words/emotes.",
-  "body": "# ![Compakt](icon.svg) Twitch Compakt\r\nTwitch Chat streamlining. Condenses repeated messages/words/emotes.\r\n\r\n## Developers\r\n1. Download/clone the repository into a local folder.\r\n2. [Load the extension into Chrome.](https://developer.chrome.com/extensions/getstarted#unpacked)\r\n",
+  "body": "# ![Compakt](icon.svg) Twitch Compakt\r\nTwitch Chat streamlining. Condenses repeated messages/words/emotes.\r\n\r\n## Features\r\n* Compresses repeated text e.g. \"kappa kappa kappa\" = \"kappa x3\"\r\n* Compresses repeated emotes similar to how text is compressed.\r\n* Repeated messages are grouped together.\r\n* See a list of all the users who uttered the same message.\r\n\r\n## How to use it\r\n* Just install and visit a Twitch stream to see it in action.\r\n* (Options menu coming soon!)\r\n\r\n## Developers\r\nThis repository itself is an unpacked extension (with some extra unnecessary files like this readme...).\r\nSo all that needs to be done to develop with Compakt is:\r\n\r\n1. Download/clone the repository into a local folder.\r\n2. [Load the extension into Chrome.](https://developer.chrome.com/extensions/getstarted#unpacked)\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
