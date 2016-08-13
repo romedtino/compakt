@@ -1,9 +1,9 @@
 var $ = require("jquery");
 var clib = require("./compress.js");
-var twitch = require("./twitchvars.js");
+var twitchVars = require("./twitchvars.js");
 
 // Compakt
-function Compakt(size) {
+function compakt(size) {
     // Ordered Dictionary objects
     var dict = {};
     var order = [];
@@ -16,12 +16,12 @@ function Compakt(size) {
             mutation.addedNodes.forEach(function (addedNode) {
                 // At this point it's potentially a chatMessage object.
                 var chatMessage = $(addedNode);
-                if (!chatMessage.is(twitch.chatMsgClass1, twitch.chatMsgClass2)) {
+                if (!chatMessage.is(twitchVars.chatMsgClass1, twitchVars.chatMsgClass2)) {
                     // this isn't a chat message, skip processing.
                     return;
                 }
                 // Grab the actual span element with the message content
-                var messageElement = chatMessage.children(twitch.chatMsgContent);
+                var messageElement = chatMessage.children(twitchVars.chatMsgContent);
 
                 // Make key from message.
                 var key = clib.makeKeyFromChatMessage(messageElement);
@@ -80,4 +80,4 @@ function Compakt(size) {
     });
 }
 
-module.exports = Compakt;
+module.exports = compakt;
