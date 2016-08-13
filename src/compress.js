@@ -157,20 +157,12 @@ function makeKeyFromChatMessage(messageElement) {
 
     for (var i = 0; i < chatLine.length; i++) {
         var type = chatLine[i].nodeType;
-        if (type === 3) {
-            // Text node
-            var txt = chatLine[i].textContent;
-            if (txt.trim() === "") {
-                continue;
-            }
-            var newMsg = removeRepeatedWords(txt.trim());
-            key += newMsg + " ";
-            prevEmote = null;
-        } else if (type === 8) {
-            // skip comment nodes
-            prevEmote = null;
-
-        } else if (type === 1) {
+        
+        switch (type)
+        {       
+          //Element Node
+          case 1:
+          {
             // Element node, should be an emoticon
             // ele.text() should be the Twitch name for the emoticon
             var ele = $(chatLine[i]);
@@ -183,6 +175,27 @@ function makeKeyFromChatMessage(messageElement) {
             } else {
                 prevEmote = emoticonName;
             }
+            break;
+          }
+          
+          //Text Node
+          case 3:
+          {
+            // Text node
+            var txt = chatLine[i].textContent;
+            if (txt.trim() === "") {
+                continue;
+            }
+            var newMsg = removeRepeatedWords(txt.trim());
+            key += newMsg + " ";
+          }
+          
+          //All others
+          default:
+          {
+            prevEmote = null;
+            break;
+          }
         }
     }
 
