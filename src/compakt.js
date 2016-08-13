@@ -24,7 +24,7 @@ function compakt(size) {
                 var messageElement = chatMessage.children(twitchVars.chatMsgContent);
 
                 // Make key from message.
-                var key = clib.makeKeyFromChatMessage(messageElement);
+                var key = clib.makeKeyFromChatMessage(messageElement.contents());
                 if (key in dict) {
                     // Update cached message
                     var msgEle = $(dict[key].ele);
@@ -55,11 +55,11 @@ function compakt(size) {
                     // the ember framework Twitch uses.
                     chatMessage.hide();
                 } else {
-                    // Add unique message to cacheh.
+                    // Add unique message to cache.
 
                     // Sanitize the message.
                     // Method does this "in-place" (edits existing DOM element).
-                    clib.compressMessageReadable(messageElement);
+                    clib.compressMessageReadable(messageElement.contents());
 
                     // Update the ordered dictionary
                     dict[key] = {ele: chatMessage, count: 1};
