@@ -1,7 +1,8 @@
 var $ = require("jquery");
-var Compakt = require("./compakt.js");
+var compakt = require("./compakt.js");
+var twitchVars = require("./twitchvars.js");
 
-var compakt = new Compakt(25);
+var compaktInstance = compakt(25);
 
 // configuration of the observer:
 var config = {attributes: false, childList: true, characterData: false};
@@ -13,13 +14,13 @@ var config = {attributes: false, childList: true, characterData: false};
 var htmlBody = $("body")[0];
 var chatLoadedObserver = new MutationObserver(function (mutations, observer) {
     mutations.forEach(function (mutation) {
-        var chatSelector = $(twitchChatUlClass);
+        var chatSelector = $(twitchVars.chatULClass);
         if (chatSelector.length > 0) {
             // Select the node element.
             var target = chatSelector[0];
 
             // Pass in the target node, as well as the observer options
-            compakt.observe(target, config);
+            compaktInstance.observe(target, config);
 
             // Alert page action that we found a chat and we're going to get to work.
             chrome.runtime.sendMessage({twitchChat: true}, function (response) {
