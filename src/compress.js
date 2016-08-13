@@ -54,7 +54,12 @@ function compressMessageReadable(messageElement) {
 
     for (var i = 0; i < chatLine.length; i++) {
         var type = chatLine[i].nodeType;
-        if (type === 3) {
+        
+        switch (type)
+        {
+          //Text Node
+          case 3:
+          {
             // Text node
             if (chatLine[i].data.trim() === "") {
                 // Gotta skip those weird nodes that are not rendered on screen but
@@ -81,10 +86,12 @@ function compressMessageReadable(messageElement) {
             }
             chatLine[i].parentNode.removeChild(chatLine[i]);
             prevElement = null;
-        } else if (type === 8) {
-            // Comment Node
-            prevElement = null;
-        } else if (type === 1) {
+            break;
+          }
+          
+          //Element Node
+          case 1:
+          {
             var ele = $(chatLine[i]);
             var eleText = ele.text().trim();
             // Node should be an emoticon
@@ -107,6 +114,12 @@ function compressMessageReadable(messageElement) {
                 prevElement = eleText;
                 count = 1;
             }
+            break;
+          }
+          
+          default:
+          prevElement = null;
+          break;
         }
     }
 }
@@ -177,10 +190,8 @@ function makeKeyFromChatMessage(messageElement) {
     return key.toLowerCase();
 }
 
-module.exports.wrapInRepeatedWordClass = wrapInRepeatedWordClass;
-module.exports.compressStr = compressStr;
+// Export public functions
 module.exports.compressMessageReadable = compressMessageReadable;
-module.exports.removeRepeatedWords = removeRepeatedWords;
 module.exports.makeKeyFromChatMessage = makeKeyFromChatMessage;
 
 
