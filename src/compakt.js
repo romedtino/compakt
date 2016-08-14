@@ -24,7 +24,7 @@ function compakt(size) {
                 var messageElement = chatMessage.children(twitchVars.chatMsgContent);
 
                 // Make key from message.
-                var key = clib.makeKeyFromChatMessage(messageElement.contents());
+                var key = clib.getKey(messageElement);
                 if (key in dict) {
                     // Update cached message
                     var msgEle = $(dict[key].ele);
@@ -59,7 +59,10 @@ function compakt(size) {
 
                     // Sanitize the message.
                     // Method does this "in-place" (edits existing DOM element).
-                    clib.compressMessageReadable(messageElement.contents());
+                    var newMsgEle = clib.getCompressedHTML(messageElement);
+                    if(newMsgEle) {
+                        messageElement.replaceWith(newMsgEle);
+                    }
 
                     // Update the ordered dictionary
                     dict[key] = {ele: chatMessage, count: 1};
