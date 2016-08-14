@@ -10101,7 +10101,7 @@ function compakt(size) {
                 var messageElement = chatMessage.children(twitchVars.chatMsgContent);
 
                 // Make key from message.
-                var key = clib.makeKeyFromChatMessage(messageElement);
+                var key = clib.makeKeyFromChatMessage(messageElement.contents());
                 if (key in dict) {
                     // Update cached message
                     var msgEle = $(dict[key].ele);
@@ -10132,11 +10132,11 @@ function compakt(size) {
                     // the ember framework Twitch uses.
                     chatMessage.hide();
                 } else {
-                    // Add unique message to cacheh.
+                    // Add unique message to cache.
 
                     // Sanitize the message.
                     // Method does this "in-place" (edits existing DOM element).
-                    clib.compressMessageReadable(messageElement);
+                    clib.compressMessageReadable(messageElement.contents());
 
                     // Update the ordered dictionary
                     dict[key] = {ele: chatMessage, count: 1};
@@ -10196,7 +10196,7 @@ function compressStr(msg) {
     return newStr;
 }
 
-function compressMessageReadable(messageElement) {
+function compressMessageReadable(chatLine) {
     // Takes a Twitch chat message element and makes a Compakt version.
     // For a message, each node type is handled differently.
     //   1.Text nodes with repeated, consecutive words are replaced with an element
@@ -10207,8 +10207,6 @@ function compressMessageReadable(messageElement) {
 
     // Note: we assume if we ever encounter any element nodes that they are
     // Twitch emoticons.
-
-    var chatLine = messageElement.contents();
 
     var prevElement = null;
     var count = 0;
@@ -10301,7 +10299,7 @@ function removeRepeatedWords(msg) {
     return newStr;
 }
 
-function makeKeyFromChatMessage(messageElement) {
+function makeKeyFromChatMessage(chatLine) {
     // Takes a Twitch chat message element and creates a key.
     // The objective is that the key uniquely identifies this message.
     // For a message, each node type is handled differently.
@@ -10310,8 +10308,6 @@ function makeKeyFromChatMessage(messageElement) {
     // Element nodes are checked if they are repeated in series.
     // Note: we assume if we ever encounter any element nodes that they are
     // Twitch emoticons.
-
-    var chatLine = messageElement.contents();
 
     var prevEmote = null;
     var key = "";
